@@ -13,24 +13,35 @@
  *     }
  * }
  */
-class Solution {
+class Solution { 
+    
+    private int numOfGoodNodes = 0;
+    
     public int goodNodes(TreeNode root) {
-        return countGoodNodes(root, root.val);
-
-    }
-    private int countGoodNodes(TreeNode node, int maxSoFar){
-        int  numOfGoodNodes=0;
-
-        if(node !=null){
-            if(node.val >=maxSoFar){
-            maxSoFar =node.val;
-             numOfGoodNodes++;
-            }
-            numOfGoodNodes+= countGoodNodes(node.left, maxSoFar);
-            numOfGoodNodes+= countGoodNodes(node.right, maxSoFar);
-
-        }
+       dfs(root, Integer.MIN_VALUE);
+        
         return numOfGoodNodes;
-
     }
+    
+    private void dfs(TreeNode node, int maxSoFar){
+              
+        if (maxSoFar <= node.val) { 
+            numOfGoodNodes++;
+            
+            }
+        
+         if (node.right != null) {
+            dfs(node.right, Math.max(node.val, maxSoFar));
+        }
+        
+        if (node.left != null) {
+            dfs(node.left, Math.max(node.val, maxSoFar));
+        }
+            
+            
+    }
+        
+                           
 }
+        
+       
