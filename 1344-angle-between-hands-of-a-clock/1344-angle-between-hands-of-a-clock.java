@@ -6,8 +6,14 @@ class Solution {
     double minutesAngle = oneMinAngle * minutes;
       
     double hourAngle = (hour % 12 + minutes / 60.0) * oneHourAngle;
+      System.out.println( hourAngle);
 
     double diff = Math.abs(hourAngle - minutesAngle);
+       System.out.println(minutesAngle);
+      System.out.println(diff);
+      
     return Math.min(diff, 360 - diff);
+      
+       
   }
 }
