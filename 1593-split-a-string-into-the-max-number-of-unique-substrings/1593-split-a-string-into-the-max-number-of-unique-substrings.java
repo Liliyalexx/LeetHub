@@ -31,10 +31,10 @@ class Solution {
     private int helper(String s, Set<String> seen){
         int max = 0;
         for(int i = 1; i <= s.length(); i++) {
-             String candidate = s.substring(0, i);
+             String candidate = s.substring(0, i); //"addbsd" -> "a" + "ddbsd"
             if(!seen.contains(candidate)) {
-            seen.add(candidate);
-                max = Math.max(max, 1+helper(s.substring(i), seen));
+            seen.add(candidate); //a
+                max = Math.max(max, 1+helper(s.substring(i), seen)); //ddbsd, [a]
                 seen.remove(candidate);
                 
                 }
